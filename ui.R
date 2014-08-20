@@ -1,17 +1,30 @@
-shinyUI(pageWithSidebar(
-headerPanel("Intergenerational Social Mobility - Occupational Status"),
-sidebarPanel(
-	h1('Mobility Table'),
-	h4('Select the father\'s and the son\'s occupational status ranked on a scale from 1 to 8, where 1 is the highest status and 8 the lowest, and you will see the probability of the son\'s status given the father\'s'),
-	h3('Enter the data'),
-	numericInput('father', 'Father\'s Occupational Status: ', 1, min = 1, max = 8, step = 1),
-	numericInput('son', 'Son\'s Occupational Status: ', 1, min = 1, max = 8, step = 1)
-	
-),
-mainPanel(
+library(markdown)
 
-h4('Probability'),
-verbatimTextOutput('mobProb')
-
-)
+shinyUI(navbarPage("Intergenerational Social Mobility - Occupational Status",
+                   tabPanel("Predictor",
+                            sidebarLayout(
+                              
+                              # Sidebar with a slider input
+                              sidebarPanel(
+                                sliderInput('father', 'Father\'s Occupational Status: ',
+                                            min = 1,
+                                            max = 8,
+                                            value = 1),
+                                sliderInput('son', 'Son\'s Occupational Status: ',
+                                            min = 1,
+                                            max = 8,
+                                            value = 1)
+                                #numericInput('father', 'Father\'s Occupational Status: ', 1, min = 1, max = 8, step = 1),
+                                #numericInput('son', 'Son\'s Occupational Status: ', 1, min = 1, max = 8, step = 1)
+                              ),
+                              
+                              # Show a plot of the generated distribution
+                              mainPanel(
+                                h4('Probability'),
+                                verbatimTextOutput('mobProb')
+                              )
+                            )
+                            ),
+                   tabPanel("About",
+                            includeMarkdown("README.md"))
 ))

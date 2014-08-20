@@ -14,18 +14,13 @@
 
 #### Usage
 
-1. Set the working directory where the shiny application files are
+In the Predictor panel:
 
-2. Load the shiny package:
+1. select the Father's Occupational Status
 
-```r
-library('shiny')
-```
-3. launch the application
+2. select the Son's Occupational Status
 
-```r
-runApp()
-```
+3. read on the right the predicted probability of that combination
 
   
 #### Reference
