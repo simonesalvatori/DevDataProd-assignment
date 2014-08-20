@@ -1,4 +1,9 @@
-# Social Mobility Predictor
+---
+title: "Social Mobility Predictor"
+output:
+  html_document:
+    keep_md: yes
+---
 
 #### Description
   This shiny application implements a predictor of social mobility. More precisely, given the social status of a father's occupation (input 1) it provides the probability of a given social status (also provided as input 2) of the son's occupation.  
@@ -6,10 +11,15 @@
 
 #### Data
   The data is based on the cross-classification of a sample of British males according to each subject's occupational status and his father's occupational status (1949).  
-  Data Source: Goodman, L. A. (1979) Simple Models for the Analysis of Association in Cross-Classifications having Ordered Categories. J. Am. Stat. Assoc., 74 (367), 537Â–552  
+  Data Source: Goodman, L. A. (1979) Simple Models for the Analysis of Association in Cross-Classifications having Ordered Categories. J. Am. Stat. Assoc., 74 (367), 537–552  
   The table is part of the Base R datasets, included in the standard distribution of R.  
   The intergenerational social correlation at a glance in this plot:
-  ![plot of chunk unnamed-chunk-1](./social_mobility_predictor_documentation_files/figure-html/unnamed-chunk-1.png) 
+  ```{r, echo=FALSE}
+  require(stats); require(graphics)
+  plotData <- occupationalStatus
+  names(dimnames(plotData)) <- c("son's occupation", "father's occupation")
+  plot(plotData, main = 'Occupational Status')
+  ```
   
 
 #### Usage
@@ -17,13 +27,11 @@
 1. Set the working directory where the shiny application files are
 
 2. Load the shiny package:
-
-```r
+```{r, eval = FALSE}
 library('shiny')
 ```
 3. launch the application
-
-```r
+```{r, eval = FALSE}
 runApp()
 ```
 
